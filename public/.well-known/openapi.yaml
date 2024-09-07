@@ -1,0 +1,184 @@
+openapi: 3.0.2
+info:
+  title: DocsBot Retrieval Plugin API
+  description: A retrieval API for querying documents from various libraries based on natural language queries.
+  version: 1.0.0
+servers:
+  - url: https://api.docsbot.ai
+paths:
+  /teams/{team_id}/bots/{bot_id}/search:
+    post:
+      summary: Semantic Search
+      operationId: Semantic_Search_teams__team_id__bots__bot_id__search_post
+      parameters:
+        - required: true
+          schema:
+            title: Team Id
+            type: string
+          name: team_id
+          in: path
+        - required: true
+          schema:
+            title: Bot Id
+            type: string
+          name: bot_id
+          in: path
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Query'
+        required: true
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema:
+                title: Response Semantic Search Teams  Team Id  Bots  Bot Id  Search Post
+                anyOf:
+                  - $ref: '#/components/schemas/QueryResults'
+                  - $ref: '#/components/schemas/Error'
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+  /libraries:
+    get:
+      summary: List Libraries That Can Be Searched
+      operationId: List_libraries_that_can_be_searched_libraries_get
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema:
+                title: Response List Libraries That Can Be Searched Libraries Get
+                anyOf:
+                  - $ref: '#/components/schemas/BotResults'
+                  - $ref: '#/components/schemas/Error'
+components:
+  schemas:
+    Bot:
+      title: Bot
+      required:
+        - name
+        - description
+        - team_id
+        - bot_id
+      type: object
+      properties:
+        name:
+          title: Name of the bot library
+          type: string
+        description:
+          title: Description of the bot library
+          type: string
+        team_id:
+          title: team_id to use for /search endpoint to search this library
+          type: string
+        bot_id:
+          title: bot_id to use for /search endpoint to search this library
+          type: string
+    BotResults:
+      title: BotResults
+      required:
+        - libraries
+      type: object
+      properties:
+        libraries:
+          title: List of libraries that can be searched
+          type: array
+          items:
+            $ref: '#/components/schemas/Bot'
+    Error:
+      title: Error
+      required:
+        - error
+      type: object
+      properties:
+        error:
+          title: The error message
+          type: string
+    HTTPValidationError:
+      title: HTTPValidationError
+      type: object
+      properties:
+        detail:
+          title: Detail
+          type: array
+          items:
+            $ref: '#/components/schemas/ValidationError'
+    Query:
+      title: Query
+      required:
+        - query
+      type: object
+      properties:
+        query:
+          title: Query
+          type: string
+        top_k:
+          title: Top K
+          type: integer
+          default: 4
+    QueryResults:
+      title: QueryResults
+      required:
+        - query
+        - results
+      type: object
+      properties:
+        query:
+          title: Query
+          type: string
+        results:
+          title: Results
+          type: array
+          items:
+            $ref: '#/components/schemas/QuerySource'
+    QuerySource:
+      title: QuerySource
+      required:
+        - certainty
+        - content
+      type: object
+      properties:
+        title:
+          title: The title of the source
+          type: string
+        url:
+          title: The url of the source
+          type: string
+        page:
+          title: For PDFs, the page number of the source in the PDF
+          type: integer
+        certainty:
+          title: Certainty score of the source
+          type: number
+        content:
+          title: The raw text content of the source.
+          type: string
+    ValidationError:
+      title: ValidationError
+      required:
+        - loc
+        - msg
+        - type
+      type: object
+      properties:
+        loc:
+          title: Location
+          type: array
+          items:
+            anyOf:
+              - type: string
+              - type: integer
+        msg:
+          title: Message
+          type: string
+        type:
+          title: Error Type
+          type: string

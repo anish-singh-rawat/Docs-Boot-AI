@@ -1,0 +1,59 @@
+export default function IntercomLogo(props) {
+  return (
+    <svg
+      width="512"
+      height="512"
+      viewBox="0 0 512 512"
+      xmlns="http://www.w3.org/2000/svg"
+      stroke="currentColor"
+      strokeWidth="30"
+      strokeMiterlimit="10"
+      fill="none"
+      {...props}
+    >
+      <g>
+        <g>
+          <path d="M413.401,486H98.599    C64.026,486,36,457.974,36,423.401V88.599C36,54.026,64.026,26,98.599,26h314.803C447.974,26,476,54.026,476,88.599v334.803    C476,457.974,447.974,486,413.401,486z" />
+          <line
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            x1="396"
+            x2="396"
+            y1="147.176"
+            y2="284.823"
+          />
+          <line
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            x1="326"
+            x2="326"
+            y1="108.941"
+            y2="323.059"
+          />
+          <line strokeLinecap="round" strokeLinejoin="round" x1="256" x2="256" y1="86" y2="346" />
+          <line
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            x1="186"
+            x2="186"
+            y1="108.941"
+            y2="323.059"
+          />
+          <line
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            x1="116"
+            x2="116"
+            y1="147.176"
+            y2="284.823"
+          />
+          <path
+            d="M106,387.816c0,0,142.926,85.913,300,0"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+          />
+        </g>
+      </g>
+    </svg>
+  )
+}

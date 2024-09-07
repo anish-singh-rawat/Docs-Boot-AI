@@ -1,0 +1,19 @@
+{
+  "schema_version": "v1",
+  "name_for_model": "DocsBot",
+  "name_for_human": "DocsBot Retrieval Plugin",
+  "description_for_model": "Plugin for searching documents (such as files, websites, and more) from various subject libraries the user has indexed on DocsBot to find answers to questions and retrieve relevant information. Use it whenever a user asks something that might be found in one of their DocsBot libraries.",
+  "description_for_human": "Search through your DocsBot indexed documentation.",
+  "auth": {
+    "type": "user_http",
+    "authorization_type": "bearer"
+  },
+  "api": {
+    "type": "openapi",
+    "url": "https://docsbot.ai/.well-known/openapi.yaml",
+    "has_user_authentication": true
+  },
+  "logo_url": "https://docsbot.ai/.well-known/logo.png",
+  "contact_email": "human@docsbot.ai", 
+  "legal_info_url": "https://docsbot.ai/legal/terms-of-service"
+}

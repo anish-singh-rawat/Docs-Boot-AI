@@ -1,0 +1,76 @@
+{
+    "headers": [
+        {
+            "source": "/(.*)",
+            "headers": [
+                {
+                    "key": "X-Content-Type-Options",
+                    "value": "nosniff"
+                },
+                {
+                    "key": "X-Frame-Options",
+                    "value": "DENY"
+                },
+                {
+                    "key": "X-XSS-Protection",
+                    "value": "1; mode=block"
+                }
+            ]
+        },
+        {
+            "source": "/(chat|ask|iframe)/(.*)",
+            "headers": [
+                {
+                    "key": "X-Frame-Options",
+                    "value": "ALLOWALL"
+                }
+            ]
+        }
+    ],
+    "crons": [
+        {
+            "path": "/api/cron/reingest?key=iuefhisue24182",
+            "schedule": "0 * * * *"
+        },
+        {
+            "path": "/api/cron/updateCounts?key=aowidjaowd3721",
+            "schedule": "0 * * * *"
+        },
+        {
+            "path": "/api/cron/carbon?key=efjlnczww7236912",
+            "schedule": "* * * * *"
+        },
+        {
+            "path": "/api/cron/crawler?key=efjl95hdjysgq26912",
+            "schedule": "* * * * *"
+        },
+        {
+            "path": "/api/cron/reports?key=34hjslm8492hs521ds",
+            "schedule": "10 * 1 * *"
+        },
+        {
+            "path": "/api/cron/report-email?key=34hjslm8492hs521ds",
+            "schedule": "0 10 1 * *"
+        }
+    ],
+    "functions": {
+        "src/pages/api/bento-webhook/index.js": {
+            "maxDuration": 90
+        },
+        "src/pages/api/teams/[teamId]/bots/[botId]/export-log.js": {
+            "memory": 3008,
+            "maxDuration": 300
+        },
+        "src/pages/api/teams/[teamId]/bots/[botId]/stats.js": {
+            "memory": 2048,
+            "maxDuration": 120
+        },
+        "src/pages/api/cron/reports.js": {
+            "maxDuration": 300
+        },
+        "src/pages/api/cron/carbon.js": {
+            "memory": 2048,
+            "maxDuration": 300
+        }
+    }
+}

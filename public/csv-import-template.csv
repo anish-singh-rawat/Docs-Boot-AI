@@ -1,0 +1,24 @@
+"Content (required)","Title","URL (optional, can be blank)","Page # (optional, can be blank)"
+Answer text,Question Text,,
+"Question text
+Answer text",Source title,https://linktofaqorsomething.com,
+A long text article with thousands of words,Article title,https://articleurl.com,
+A page of a document to see page numbers,Document title,,1
+A page of a document to see page numbers,Document title,,2
+"## This is markdown document
+
+It may contain **formatted** text or lists:
+
+- item one
+- item two
+
+[Links](https://docsbot.ai) or even images!
+
+![Sunset](https://images.unsplash.com/photo-1490730141103-6cac27aaab94)",Document title,,
+"A row from a spreadsheet with column name + data:
+Name: John Smith
+Email: john@smith.com
+Age: 32
+City: Chicago
+State: Illinois
+Revenue: $1231.00",Customers,,
